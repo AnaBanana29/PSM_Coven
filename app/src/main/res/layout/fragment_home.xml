@@ -44,15 +44,16 @@
         android:textAlignment="center" />
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cv_hechizo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_hechizoDestacado"
         android:layout_marginStart="12dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="12dp"
         android:layout_marginBottom="12dp"
         app:cardCornerRadius="12dp"
-        app:cardElevation="6dp"
-        android:layout_below="@+id/tv_hechizoDestacado">
+        app:cardElevation="2dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -91,21 +92,21 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal"
+                android:layout_gravity="center"
                 android:gravity="center"
-                android:layout_gravity="center">
+                android:orientation="horizontal">
 
                 <ImageView
                     android:id="@+id/iv_heart"
                     android:layout_width="25dp"
                     android:layout_height="25dp"
-                    android:src="@drawable/ic_favorite_black_24dp"/>
+                    android:src="@drawable/ic_favorite_black_24dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="12345"
-                    android:layout_marginLeft="8dp"/>
+                    android:layout_marginLeft="8dp"
+                    android:text="12345" />
 
             </LinearLayout>
 

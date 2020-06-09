@@ -12,7 +12,7 @@ import com.example.coven.fragments.EventosFragment
 import com.example.coven.fragments.HomeFragment
 import com.example.coven.fragments.LibreriaFragment
 
-class Home : AppCompatActivity() {
+class HomeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
