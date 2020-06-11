@@ -28,5 +28,6 @@ namespace wsCoven.Models.DAL
         public virtual DbSet<TB_Usuario> TB_Usuario { get; set; }
         public virtual DbSet<TB_Reunion> TB_Reunion { get; set; }
         public virtual DbSet<TB_ReunionComentario> TB_ReunionComentario { get; set; }
+        public virtual DbSet<TB_Hechizo> TB_Hechizo { get; set; }
     }
 }

@@ -5,12 +5,14 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="3ecca1a10e474c9b9c62ed5bc7b17138" Name="Diagram1">
-        <EntityTypeShape EntityType="CovenModel.TB_Usuario" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CovenModel.TB_Reunion" Width="1.5" PointX="3.75" PointY="0.75" />
-        <EntityTypeShape EntityType="CovenModel.TB_ReunionComentario" Width="1.5" PointX="2.375" PointY="4.5" />
+        <EntityTypeShape EntityType="CovenModel.TB_Usuario" Width="1.5" PointX="3.875" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CovenModel.TB_Reunion" Width="1.5" PointX="8.375" PointY="1.125" />
+        <EntityTypeShape EntityType="CovenModel.TB_ReunionComentario" Width="1.5" PointX="6.125" PointY="5.375" />
         <AssociationConnector Association="CovenModel.FK_TB_Reunion_TB_Usuario" />
         <AssociationConnector Association="CovenModel.FK_TB_ReunionComentario_TB_Reunion" />
         <AssociationConnector Association="CovenModel.FK_TB_ReunionComentario_TB_Usuario" />
+        <EntityTypeShape EntityType="CovenModel.TB_Hechizo" Width="1.5" PointX="0.625" PointY="1.375" />
+        <AssociationConnector Association="CovenModel.FK__TB_Hechiz__usuar__5CD6CB2B" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

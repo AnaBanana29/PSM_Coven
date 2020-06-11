@@ -5,6 +5,16 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="CovenModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="TB_Hechizo">
+          <Key>
+            <PropertyRef Name="id_Hechizo" />
+          </Key>
+          <Property Name="id_Hechizo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="titulo" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="descripcion" Type="varchar(max)" Nullable="false" />
+          <Property Name="likes" Type="int" Nullable="false" />
+          <Property Name="usuario_id" Type="int" />
+        </EntityType>
         <EntityType Name="TB_Reunion">
           <Key>
             <PropertyRef Name="id_Reunion" />
@@ -38,6 +48,18 @@
           <Property Name="correo" Type="varchar" MaxLength="100" />
           <Property Name="contrasena" Type="varchar(max)" />
         </EntityType>
+        <Association Name="FK__TB_Hechiz__usuar__5CD6CB2B">
+          <End Role="TB_Usuario" Type="Self.TB_Usuario" Multiplicity="0..1" />
+          <End Role="TB_Hechizo" Type="Self.TB_Hechizo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Usuario">
+              <PropertyRef Name="id_Usuario" />
+            </Principal>
+            <Dependent Role="TB_Hechizo">
+              <PropertyRef Name="usuario_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_TB_Reunion_TB_Usuario">
           <End Role="TB_Usuario" Type="Self.TB_Usuario" Multiplicity="0..1" />
           <End Role="TB_Reunion" Type="Self.TB_Reunion" Multiplicity="*" />
@@ -75,9 +97,14 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="CovenModelStoreContainer">
+          <EntitySet Name="TB_Hechizo" EntityType="Self.TB_Hechizo" Schema="app" store:Type="Tables" />
           <EntitySet Name="TB_Reunion" EntityType="Self.TB_Reunion" Schema="app" store:Type="Tables" />
           <EntitySet Name="TB_ReunionComentario" EntityType="Self.TB_ReunionComentario" Schema="app" store:Type="Tables" />
           <EntitySet Name="TB_Usuario" EntityType="Self.TB_Usuario" Schema="app" store:Type="Tables" />
+          <AssociationSet Name="FK__TB_Hechiz__usuar__5CD6CB2B" Association="Self.FK__TB_Hechiz__usuar__5CD6CB2B">
+            <End Role="TB_Usuario" EntitySet="TB_Usuario" />
+            <End Role="TB_Hechizo" EntitySet="TB_Hechizo" />
+          </AssociationSet>
           <AssociationSet Name="FK_TB_Reunion_TB_Usuario" Association="Self.FK_TB_Reunion_TB_Usuario">
             <End Role="TB_Usuario" EntitySet="TB_Usuario" />
             <End Role="TB_Reunion" EntitySet="TB_Reunion" />
@@ -107,6 +134,7 @@
           <Property Name="contrasena" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="TB_Reunion" Relationship="CovenModel.FK_TB_Reunion_TB_Usuario" FromRole="TB_Usuario" ToRole="TB_Reunion" />
           <NavigationProperty Name="TB_ReunionComentario" Relationship="CovenModel.FK_TB_ReunionComentario_TB_Usuario" FromRole="TB_Usuario" ToRole="TB_ReunionComentario" />
+          <NavigationProperty Name="TB_Hechizo" Relationship="CovenModel.FK__TB_Hechiz__usuar__5CD6CB2B" FromRole="TB_Usuario" ToRole="TB_Hechizo" />
         </EntityType>
         <EntityContainer Name="CovenEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="TB_Usuario" EntityType="Self.TB_Usuario" />
@@ -123,6 +151,11 @@
           <AssociationSet Name="FK_TB_ReunionComentario_TB_Usuario" Association="CovenModel.FK_TB_ReunionComentario_TB_Usuario">
             <End Role="TB_Usuario" EntitySet="TB_Usuario" />
             <End Role="TB_ReunionComentario" EntitySet="TB_ReunionComentario" />
+          </AssociationSet>
+          <EntitySet Name="TB_Hechizo" EntityType="CovenModel.TB_Hechizo" />
+          <AssociationSet Name="FK__TB_Hechiz__usuar__5CD6CB2B" Association="CovenModel.FK__TB_Hechiz__usuar__5CD6CB2B">
+            <End Role="TB_Usuario" EntitySet="TB_Usuario" />
+            <End Role="TB_Hechizo" EntitySet="TB_Hechizo" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="TB_Reunion">
@@ -187,6 +220,29 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="TB_Hechizo">
+          <Key>
+            <PropertyRef Name="id_Hechizo" />
+          </Key>
+          <Property Name="id_Hechizo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="titulo" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="descripcion" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="likes" Type="Int32" Nullable="false" />
+          <Property Name="usuario_id" Type="Int32" />
+          <NavigationProperty Name="TB_Usuario" Relationship="CovenModel.FK__TB_Hechiz__usuar__5CD6CB2B" FromRole="TB_Hechizo" ToRole="TB_Usuario" />
+        </EntityType>
+        <Association Name="FK__TB_Hechiz__usuar__5CD6CB2B">
+          <End Type="CovenModel.TB_Usuario" Role="TB_Usuario" Multiplicity="0..1" />
+          <End Type="CovenModel.TB_Hechizo" Role="TB_Hechizo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Usuario">
+              <PropertyRef Name="id_Usuario" />
+            </Principal>
+            <Dependent Role="TB_Hechizo">
+              <PropertyRef Name="usuario_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -226,6 +282,17 @@
                 <ScalarProperty Name="fecha" ColumnName="fecha" />
                 <ScalarProperty Name="contenido" ColumnName="contenido" />
                 <ScalarProperty Name="id_ReunionComentario" ColumnName="id_ReunionComentario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_Hechizo">
+            <EntityTypeMapping TypeName="CovenModel.TB_Hechizo">
+              <MappingFragment StoreEntitySet="TB_Hechizo">
+                <ScalarProperty Name="usuario_id" ColumnName="usuario_id" />
+                <ScalarProperty Name="likes" ColumnName="likes" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="titulo" ColumnName="titulo" />
+                <ScalarProperty Name="id_Hechizo" ColumnName="id_Hechizo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

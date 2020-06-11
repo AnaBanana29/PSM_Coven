@@ -19,6 +19,7 @@ namespace wsCoven.Models.DAL
         {
             this.TB_Reunion = new HashSet<TB_Reunion>();
             this.TB_ReunionComentario = new HashSet<TB_ReunionComentario>();
+            this.TB_Hechizo = new HashSet<TB_Hechizo>();
         }
     
         public int id_Usuario { get; set; }
@@ -32,5 +33,7 @@ namespace wsCoven.Models.DAL
         public virtual ICollection<TB_Reunion> TB_Reunion { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TB_ReunionComentario> TB_ReunionComentario { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TB_Hechizo> TB_Hechizo { get; set; }
     }
 }

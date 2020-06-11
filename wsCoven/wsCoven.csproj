@@ -175,6 +175,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\HechizosController.cs" />
     <Compile Include="Controllers\ReunionComentarioController.cs" />
     <Compile Include="Controllers\ReunionController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
@@ -196,6 +197,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CovenModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\DAL\TB_Hechizo.cs">
+      <DependentUpon>CovenModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\DAL\TB_Reunion.cs">
       <DependentUpon>CovenModel.tt</DependentUpon>
     </Compile>
@@ -205,6 +209,7 @@
     <Compile Include="Models\DAL\TB_Usuario.cs">
       <DependentUpon>CovenModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DAO\HechizosModel.cs" />
     <Compile Include="Models\DAO\ReunionComentarioModel.cs" />
     <Compile Include="Models\DAO\ReunionModel.cs" />
     <Compile Include="Models\DAO\UsuariosModel.cs" />
