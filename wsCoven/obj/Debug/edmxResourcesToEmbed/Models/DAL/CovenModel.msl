@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CovenModelStoreContainer" CdmEntityContainer="CovenEntities">
+    <EntitySetMapping Name="TB_Usuario">
+      <EntityTypeMapping TypeName="CovenModel.TB_Usuario">
+        <MappingFragment StoreEntitySet="TB_Usuario">
+          <ScalarProperty Name="id_Usuario" ColumnName="id_Usuario" />
+          <ScalarProperty Name="nombreUsuario" ColumnName="nombreUsuario" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="apellidos" ColumnName="apellidos" />
+          <ScalarProperty Name="correo" ColumnName="correo" />
+          <ScalarProperty Name="contrasena" ColumnName="contrasena" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_Reunion">
+      <EntityTypeMapping TypeName="CovenModel.TB_Reunion">
+        <MappingFragment StoreEntitySet="TB_Reunion">
+          <ScalarProperty Name="usuario_id" ColumnName="usuario_id" />
+          <ScalarProperty Name="longitud" ColumnName="longitud" />
+          <ScalarProperty Name="latitud" ColumnName="latitud" />
+          <ScalarProperty Name="nombreLugar" ColumnName="nombreLugar" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="id_Reunion" ColumnName="id_Reunion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_ReunionComentario">
+      <EntityTypeMapping TypeName="CovenModel.TB_ReunionComentario">
+        <MappingFragment StoreEntitySet="TB_ReunionComentario">
+          <ScalarProperty Name="reunion_id" ColumnName="reunion_id" />
+          <ScalarProperty Name="usuario_id" ColumnName="usuario_id" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="contenido" ColumnName="contenido" />
+          <ScalarProperty Name="id_ReunionComentario" ColumnName="id_ReunionComentario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

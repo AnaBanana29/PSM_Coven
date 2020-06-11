@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CovenModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="TB_Usuario">
+    <Key>
+      <PropertyRef Name="id_Usuario" />
+    </Key>
+    <Property Name="id_Usuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombreUsuario" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="apellidos" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="correo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="contrasena" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TB_Reunion" Relationship="CovenModel.FK_TB_Reunion_TB_Usuario" FromRole="TB_Usuario" ToRole="TB_Reunion" />
+    <NavigationProperty Name="TB_ReunionComentario" Relationship="CovenModel.FK_TB_ReunionComentario_TB_Usuario" FromRole="TB_Usuario" ToRole="TB_ReunionComentario" />
+  </EntityType>
+  <EntityContainer Name="CovenEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="TB_Usuario" EntityType="Self.TB_Usuario" />
+    <EntitySet Name="TB_Reunion" EntityType="CovenModel.TB_Reunion" />
+    <EntitySet Name="TB_ReunionComentario" EntityType="CovenModel.TB_ReunionComentario" />
+    <AssociationSet Name="FK_TB_Reunion_TB_Usuario" Association="CovenModel.FK_TB_Reunion_TB_Usuario">
+      <End Role="TB_Usuario" EntitySet="TB_Usuario" />
+      <End Role="TB_Reunion" EntitySet="TB_Reunion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TB_ReunionComentario_TB_Reunion" Association="CovenModel.FK_TB_ReunionComentario_TB_Reunion">
+      <End Role="TB_Reunion" EntitySet="TB_Reunion" />
+      <End Role="TB_ReunionComentario" EntitySet="TB_ReunionComentario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TB_ReunionComentario_TB_Usuario" Association="CovenModel.FK_TB_ReunionComentario_TB_Usuario">
+      <End Role="TB_Usuario" EntitySet="TB_Usuario" />
+      <End Role="TB_ReunionComentario" EntitySet="TB_ReunionComentario" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="TB_Reunion">
+    <Key>
+      <PropertyRef Name="id_Reunion" />
+    </Key>
+    <Property Name="id_Reunion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="fecha" Type="DateTime" Precision="3" />
+    <Property Name="nombreLugar" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="latitud" Type="Double" />
+    <Property Name="longitud" Type="Double" />
+    <Property Name="usuario_id" Type="Int32" />
+    <NavigationProperty Name="TB_Usuario" Relationship="CovenModel.FK_TB_Reunion_TB_Usuario" FromRole="TB_Reunion" ToRole="TB_Usuario" />
+    <NavigationProperty Name="TB_ReunionComentario" Relationship="CovenModel.FK_TB_ReunionComentario_TB_Reunion" FromRole="TB_Reunion" ToRole="TB_ReunionComentario" />
+  </EntityType>
+  <EntityType Name="TB_ReunionComentario">
+    <Key>
+      <PropertyRef Name="id_ReunionComentario" />
+    </Key>
+    <Property Name="id_ReunionComentario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="contenido" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="fecha" Type="DateTime" Precision="3" />
+    <Property Name="usuario_id" Type="Int32" />
+    <Property Name="reunion_id" Type="Int32" />
+    <NavigationProperty Name="TB_Reunion" Relationship="CovenModel.FK_TB_ReunionComentario_TB_Reunion" FromRole="TB_ReunionComentario" ToRole="TB_Reunion" />
+    <NavigationProperty Name="TB_Usuario" Relationship="CovenModel.FK_TB_ReunionComentario_TB_Usuario" FromRole="TB_ReunionComentario" ToRole="TB_Usuario" />
+  </EntityType>
+  <Association Name="FK_TB_Reunion_TB_Usuario">
+    <End Type="CovenModel.TB_Usuario" Role="TB_Usuario" Multiplicity="0..1" />
+    <End Type="CovenModel.TB_Reunion" Role="TB_Reunion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_Usuario">
+        <PropertyRef Name="id_Usuario" />
+      </Principal>
+      <Dependent Role="TB_Reunion">
+        <PropertyRef Name="usuario_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TB_ReunionComentario_TB_Reunion">
+    <End Type="CovenModel.TB_Reunion" Role="TB_Reunion" Multiplicity="0..1" />
+    <End Type="CovenModel.TB_ReunionComentario" Role="TB_ReunionComentario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_Reunion">
+        <PropertyRef Name="id_Reunion" />
+      </Principal>
+      <Dependent Role="TB_ReunionComentario">
+        <PropertyRef Name="reunion_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TB_ReunionComentario_TB_Usuario">
+    <End Type="CovenModel.TB_Usuario" Role="TB_Usuario" Multiplicity="0..1" />
+    <End Type="CovenModel.TB_ReunionComentario" Role="TB_ReunionComentario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_Usuario">
+        <PropertyRef Name="id_Usuario" />
+      </Principal>
+      <Dependent Role="TB_ReunionComentario">
+        <PropertyRef Name="usuario_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

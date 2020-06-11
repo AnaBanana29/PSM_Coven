@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CovenModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="TB_Reunion">
+    <Key>
+      <PropertyRef Name="id_Reunion" />
+    </Key>
+    <Property Name="id_Reunion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fecha" Type="datetime" />
+    <Property Name="nombreLugar" Type="varchar" MaxLength="100" />
+    <Property Name="latitud" Type="float" />
+    <Property Name="longitud" Type="float" />
+    <Property Name="usuario_id" Type="int" />
+  </EntityType>
+  <EntityType Name="TB_ReunionComentario">
+    <Key>
+      <PropertyRef Name="id_ReunionComentario" />
+    </Key>
+    <Property Name="id_ReunionComentario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="contenido" Type="varchar" MaxLength="200" />
+    <Property Name="fecha" Type="datetime" />
+    <Property Name="usuario_id" Type="int" />
+    <Property Name="reunion_id" Type="int" />
+  </EntityType>
+  <EntityType Name="TB_Usuario">
+    <Key>
+      <PropertyRef Name="id_Usuario" />
+    </Key>
+    <Property Name="id_Usuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombreUsuario" Type="varchar" MaxLength="100" />
+    <Property Name="nombre" Type="varchar" MaxLength="100" />
+    <Property Name="apellidos" Type="varchar" MaxLength="100" />
+    <Property Name="correo" Type="varchar" MaxLength="100" />
+    <Property Name="contrasena" Type="varchar(max)" />
+  </EntityType>
+  <Association Name="FK_TB_Reunion_TB_Usuario">
+    <End Role="TB_Usuario" Type="Self.TB_Usuario" Multiplicity="0..1" />
+    <End Role="TB_Reunion" Type="Self.TB_Reunion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_Usuario">
+        <PropertyRef Name="id_Usuario" />
+      </Principal>
+      <Dependent Role="TB_Reunion">
+        <PropertyRef Name="usuario_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TB_ReunionComentario_TB_Reunion">
+    <End Role="TB_Reunion" Type="Self.TB_Reunion" Multiplicity="0..1" />
+    <End Role="TB_ReunionComentario" Type="Self.TB_ReunionComentario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_Reunion">
+        <PropertyRef Name="id_Reunion" />
+      </Principal>
+      <Dependent Role="TB_ReunionComentario">
+        <PropertyRef Name="reunion_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TB_ReunionComentario_TB_Usuario">
+    <End Role="TB_Usuario" Type="Self.TB_Usuario" Multiplicity="0..1" />
+    <End Role="TB_ReunionComentario" Type="Self.TB_ReunionComentario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_Usuario">
+        <PropertyRef Name="id_Usuario" />
+      </Principal>
+      <Dependent Role="TB_ReunionComentario">
+        <PropertyRef Name="usuario_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CovenModelStoreContainer">
+    <EntitySet Name="TB_Reunion" EntityType="Self.TB_Reunion" Schema="app" store:Type="Tables" />
+    <EntitySet Name="TB_ReunionComentario" EntityType="Self.TB_ReunionComentario" Schema="app" store:Type="Tables" />
+    <EntitySet Name="TB_Usuario" EntityType="Self.TB_Usuario" Schema="app" store:Type="Tables" />
+    <AssociationSet Name="FK_TB_Reunion_TB_Usuario" Association="Self.FK_TB_Reunion_TB_Usuario">
+      <End Role="TB_Usuario" EntitySet="TB_Usuario" />
+      <End Role="TB_Reunion" EntitySet="TB_Reunion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TB_ReunionComentario_TB_Reunion" Association="Self.FK_TB_ReunionComentario_TB_Reunion">
+      <End Role="TB_Reunion" EntitySet="TB_Reunion" />
+      <End Role="TB_ReunionComentario" EntitySet="TB_ReunionComentario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TB_ReunionComentario_TB_Usuario" Association="Self.FK_TB_ReunionComentario_TB_Usuario">
+      <End Role="TB_Usuario" EntitySet="TB_Usuario" />
+      <End Role="TB_ReunionComentario" EntitySet="TB_ReunionComentario" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
