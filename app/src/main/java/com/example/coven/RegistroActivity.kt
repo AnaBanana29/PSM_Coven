@@ -13,7 +13,7 @@ class RegistroActivity : AppCompatActivity() {
 
         //region Navegación
 
-        btnEntrar.setOnClickListener{
+        btn_Entrar.setOnClickListener{
             val intent: Intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
         }

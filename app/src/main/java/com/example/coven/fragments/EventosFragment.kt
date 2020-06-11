@@ -1,11 +1,13 @@
 package com.example.coven.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.coven.AgregarEventoActivity
 
 import com.example.coven.R
 import com.example.coven.TopSpacingItemDecoration
@@ -50,6 +52,11 @@ class EventosFragment : Fragment() {
 
         initRecyclerView()
         addDataSet()
+
+        cv_AgregarEvento.setOnClickListener{
+            val intent: Intent = Intent(context, AgregarEventoActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     fun addDataSet() {

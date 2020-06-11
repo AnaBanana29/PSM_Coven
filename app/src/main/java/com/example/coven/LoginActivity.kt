@@ -14,12 +14,12 @@ class LoginActivity : AppCompatActivity() {
 
         //region Navegación
 
-        btnEntrar.setOnClickListener{
+        btn_Entrar.setOnClickListener{
             val intent: Intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
         }
 
-        btnRegistro.setOnClickListener{
+        btn_Registro.setOnClickListener{
             val intent: Intent = Intent(this, RegistroActivity::class.java)
             startActivity(intent)
         }
