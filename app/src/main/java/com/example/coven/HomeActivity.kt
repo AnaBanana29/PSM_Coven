@@ -11,12 +11,19 @@ import androidx.navigation.ui.setupWithNavController
 import com.example.coven.fragments.EventosFragment
 import com.example.coven.fragments.HomeFragment
 import com.example.coven.fragments.LibreriaFragment
+import com.example.coven.models.UsuarioModel
+import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
+
+        val usuarioLogin = intent.getSerializableExtra("usuarioLogin") as? UsuarioModel
+
+        //tv_usuarioNombre.setText("s")
+        //tv_fecha.setText(java.util.Calendar.getInstance().toString())
 
         val homeFragment = HomeFragment()
         val eventosFragment = EventosFragment()
@@ -34,10 +41,10 @@ class HomeActivity : AppCompatActivity() {
             true
         }
 
-        //val navController = findNavController(R.id.nav_host_fragment)
+/*         //val navController = findNavController(R.id.nav_host_fragment)
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
-/*        val appBarConfiguration = AppBarConfiguration(
+       val appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.nav_home, R.id.nav_dashboard, R.id.nav_notifications
             )

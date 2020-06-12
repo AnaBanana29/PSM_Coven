@@ -1,15 +1,23 @@
 package com.example.coven.fragments
 
+import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.annotation.RequiresApi
+import androidx.core.view.isVisible
 import com.bumptech.glide.Glide
 
 import com.example.coven.R
+import com.example.coven.models.HechizoModel
 import kotlinx.android.synthetic.main.fragment_home.*
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+import java.time.format.FormatStyle
+import javax.sql.DataSource
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -43,14 +51,37 @@ class HomeFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        // Instead of view.findViewById(R.id.hello) as TextView
+
+        val current = LocalDateTime.now()
+
+        val formatter = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM)
+        val formatted = current.format(formatter)
+
+        tv_fecha.setText(formatted)
+
         Glide.with(this)
             .load(R.drawable.fool_00)
             .placeholder(R.drawable.ic_home_black_24dp)
             .into(iv_tarot)
 
+        val hechizo = getHechizo()
+        if(hechizo != null){
+            tv_hechizoTitulo.setText(hechizo.titulo)
+            tv_hechizoUsuario.setText(hechizo.usuario_nombre)
+            tv_hechizoDescripcion.setText(hechizo.descripcion)
+            tv_hechizoLikes.setText(hechizo.likes.toString())
+        }
+
+    }
+
+    private fun getHechizo() : HechizoModel?{
+        val listHechizos = com.example.coven.models.DataSource.createDataSetHechizo()
+        val hechizoMasLikes = listHechizos.maxBy { it -> it.likes }
+
+        return hechizoMasLikes
     }
 
     companion object {
