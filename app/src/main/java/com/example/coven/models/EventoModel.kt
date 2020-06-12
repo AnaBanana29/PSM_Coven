@@ -9,7 +9,7 @@ class EventoModel(
     var titulo: String,
     var descripcion: String,
     var nombreLugar: String,
-    var latitud: Float,
-    var longitud: Float,
+    var latitud: Double,
+    var longitud: Double,
     var usuario_id: Int
 ): Serializable{}

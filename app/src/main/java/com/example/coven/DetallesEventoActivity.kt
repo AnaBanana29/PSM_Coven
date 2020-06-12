@@ -42,17 +42,25 @@ class DetallesEventoActivity : AppCompatActivity(), OnMapReadyCallback {
     // Extra: Lo utilizamos para agregar marcadores al mapa
     private var markerPositions: MutableList<LatLng>? = null
 
+    lateinit var eventoDetalles: EventoModel
+    var latitud : Double = 0.0
+    var longitud : Double = 0.0
+    lateinit var eventoLocation: LatLng
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detalles_evento)
 
-        var eventoDetalles = intent.getSerializableExtra("Evento") as EventoModel
+        eventoDetalles = intent.getSerializableExtra("Evento") as EventoModel
 
         if(eventoDetalles != null){
             txt_eventoTitulo.setText(eventoDetalles.titulo)
             txt_eventoFecha.setText(eventoDetalles.fecha)
             txt_eventoDescripcion.setText(eventoDetalles.descripcion)
+            latitud = eventoDetalles.latitud
+            longitud = eventoDetalles.longitud
+            eventoLocation = LatLng(latitud, longitud)
         }
 
         // Fragmento que contiene al mapa de google en el Layout
@@ -72,10 +80,11 @@ class DetallesEventoActivity : AppCompatActivity(), OnMapReadyCallback {
         // Inicializa nuestro objeto LocationManager
         locationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
 
+
         // Listener para detectar los eventos "Click" dentro del mapa
         map!!.setOnMapClickListener {
             // Funcion extra que desarrollamos para agregar marcadores al mapa
-            // ..
+
         }
 
         // Si estamos en Android 6.0+ tenemos que pedir permisos en tiempo de ejecucion
@@ -137,14 +146,15 @@ class DetallesEventoActivity : AppCompatActivity(), OnMapReadyCallback {
 
             // Utilizamos el metodo que desarrollamos para obtener la ubicacion del usuario
             currentLocation = getCurrentLocation()
+            addMarker(eventoDetalles.titulo, eventoLocation, false, false)
         } catch (e: SecurityException) {
             e.printStackTrace()
         }
 
         // Si se pudo obtener la ubicacion del usuario
-        if (currentLocation != null) {
+        if (eventoLocation != null) {
             // Movemos la camara para que apunte a otra coordenada diferente e la default
-            map!!.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLocation, 16f))
+            map!!.moveCamera(CameraUpdateFactory.newLatLngZoom(eventoLocation, 16f))
 
         } else { // Si no se pudo obtener la ubicacion
             // Ponemos una ubicacion fija
