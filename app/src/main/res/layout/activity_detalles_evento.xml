@@ -4,42 +4,47 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center_horizontal"
     android:orientation="vertical"
     tools:context=".DetallesEventoActivity">
 
     <TextView
+        style="@style/AppTitulo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/AppTitulo"
-        android:text="Detalles Evento"/>
+        android:layout_marginBottom="10dp"
+        android:text="Detalles Evento" />
 
     <TextView
         android:id="@+id/txt_eventoTitulo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAlignment="textStart"
-        android:text="Titulo Evento"/>
+        android:text="Titulo Evento"
+        android:layout_marginBottom="10dp"
+        android:textSize="18dp"
+        android:textAlignment="textStart" />
 
     <fragment
         android:id="@+id/mapView"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
-        android:name="com.google.android.gms.maps.SupportMapFragment"/>
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_marginBottom="10dp"
+        android:layout_width="314dp"
+        android:layout_height="397dp" />
 
     <TextView
         android:id="@+id/txt_eventoFecha"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAlignment="textStart"
-        android:text="Fecha Evento"/>
+        android:text="Fecha Evento"
+        android:layout_marginBottom="10dp"
+        android:textAlignment="textStart" />
 
     <TextView
         android:id="@+id/txt_eventoDescripcion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAlignment="textStart"
-        android:text="Descripcion Evento"/>
-
+        android:text="Descripcion Evento"
+        android:textAlignment="textStart" />
 
 
 </LinearLayout>

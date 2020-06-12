@@ -2,10 +2,12 @@ package com.example.coven
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.os.AsyncTask
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import com.example.coven.models.DataSource
 import com.example.coven.models.NetCallback
@@ -33,6 +35,15 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        var prefs = getSharedPreferences("misPrefs", Context.MODE_PRIVATE)
+        val usr = prefs.getString("usr", null)
+        val pwd = prefs.getString("pwd", null)
+
+        if(usr != null)
+            txt_Usuario.setText(usr)
+        if(pwd != null)
+            pwd_Contrasena.setText(pwd)
+
         context = this
         service = serviceBuillder(this, this).webservice
 
@@ -44,9 +55,16 @@ class LoginActivity : AppCompatActivity() {
             //login(usuario, contrasena, service)
             val usuarioLogin = loginDummy(usuario, contrasena)
 
-            if(usuarioLogin != null){
+            if(usuarioLogin != null) {
                 val intent: Intent = Intent(context, HomeActivity::class.java)
                 intent.putExtra("usuarioLogin", usuarioLogin)
+
+                prefs.edit()
+                    .putString("usr", usuario)
+                    .putString("pwd", contrasena)
+                    .apply()
+
+
                 startActivity(intent)
                 finish()
             }else{
