@@ -10,7 +10,8 @@ import com.example.coven.R
 import com.example.coven.models.EventoModel
 import kotlinx.android.synthetic.main.template_eventos_item.view.*
 
-class EventoAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
+class EventoAdapter() :
+    RecyclerView.Adapter<RecyclerView.ViewHolder>(){
 
     private var items: List<EventoModel> = ArrayList()
 
@@ -33,8 +34,8 @@ class EventoAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
         return items.size
     }
 
-    fun submitList(eventoList: List<EventoModel>) {
-        items = eventoList
+    fun submitList(eventoList: List<EventoModel>?) {
+        items = eventoList!!
     }
 
     class EventoViewHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -46,13 +47,16 @@ class EventoAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
 
         fun bind(eventoModel: EventoModel){
 
-            evento_fecha.setText(eventoModel._fecha.toString())
-            evento_titulo.setText(eventoModel._titulo)
-            evento_descripcion.setText(eventoModel._descripcion)
-            evento_lugar.setText(eventoModel._nombreLugar)
+            evento_titulo.setText(eventoModel.titulo)
+            evento_descripcion.setText(eventoModel.descripcion)
+            evento_lugar.setText(eventoModel.nombreLugar)
 
         }
 
+    }
+
+    interface OnItemClickListener{
+        fun onItemClick(evento: EventoModel)
     }
 
 }

@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.coven">
+    <!-- Valida que el dispositivo cuente con OPEN GL ES v2 -->
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true" />
 
-    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- Google Maps guarda cache en externa -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- Obtener ubicacion del usuario -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -11,7 +19,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AgregarEventoActivity"></activity>
+        <activity android:name=".GestosActivity"></activity>
+        <activity android:name=".GrimorioActivity" />
+        <activity android:name=".DetallesEventoActivity" />
+        <activity android:name=".AgregarEventoActivity" />
         <activity
             android:name=".HomeActivity"
             android:label="@string/title_activity_home" />
@@ -23,6 +34,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAlXXM677_TmebL2bgbwJQW9mc1gDLcpFE" />
     </application>
 
 </manifest>
