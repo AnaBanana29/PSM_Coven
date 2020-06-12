@@ -58,8 +58,7 @@ class DetallesEventoActivity : AppCompatActivity(), OnMapReadyCallback {
         map = googleMap
 
         // Inicializa nuestro objeto LocationManager
-        locationManager =
-            getSystemService(Context.LOCATION_SERVICE) as LocationManager
+        locationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
 
         // Listener para detectar los eventos "Click" dentro del mapa
         map!!.setOnMapClickListener {

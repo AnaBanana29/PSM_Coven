@@ -16,7 +16,6 @@ import com.example.coven.LoginActivity
 import com.example.coven.R
 import com.example.coven.TopSpacingItemDecoration
 import com.example.coven.models.EventoModel
-import com.example.coven.networking.ApiService
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import kotlinx.android.synthetic.main.fragment_eventos.*

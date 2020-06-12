@@ -30,12 +30,12 @@
         android:ems="10"
         android:hint="Usuario"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/pwd_Contraseña"
+        app:layout_constraintBottom_toTopOf="@+id/pwd_Contrasena"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/pwd_Contraseña"
+        android:id="@+id/pwd_Contrasena"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -59,7 +59,7 @@
         android:text="Ingresar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pwd_Contraseña" />
+        app:layout_constraintTop_toBottomOf="@+id/pwd_Contrasena" />
 
     <Button
         android:id="@+id/btn_Registro"

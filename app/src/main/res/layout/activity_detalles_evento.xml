@@ -31,7 +31,7 @@
         android:id="@+id/mapView"
         android:layout_width="250dp"
         android:layout_height="250dp"
-        android:name="com.google.android.gms.maps.MapFragment"/>
+        android:name="com.google.android.gms.maps.SupportMapFragment"/>
 
     <TextView
         android:id="@+id/txt_eventoFecha"
