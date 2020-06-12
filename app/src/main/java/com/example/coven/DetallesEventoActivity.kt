@@ -12,6 +12,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
+import com.example.coven.fragments.EventoAdapter
+import com.example.coven.models.EventoModel
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -19,6 +21,7 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.gms.maps.model.PolylineOptions
+import kotlinx.android.synthetic.main.activity_detalles_evento.*
 
 class DetallesEventoActivity : AppCompatActivity(), OnMapReadyCallback {
     // Geocoding:
@@ -39,9 +42,18 @@ class DetallesEventoActivity : AppCompatActivity(), OnMapReadyCallback {
     // Extra: Lo utilizamos para agregar marcadores al mapa
     private var markerPositions: MutableList<LatLng>? = null
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detalles_evento)
+
+        var eventoDetalles = intent.getSerializableExtra("Evento") as EventoModel
+
+        if(eventoDetalles != null){
+            txt_eventoTitulo.setText(eventoDetalles.titulo)
+            txt_eventoFecha.setText(eventoDetalles.fecha)
+            txt_eventoDescripcion.setText(eventoDetalles.descripcion)
+        }
 
         // Fragmento que contiene al mapa de google en el Layout
         mapFragment = supportFragmentManager.findFragmentById(R.id.mapView) as SupportMapFragment

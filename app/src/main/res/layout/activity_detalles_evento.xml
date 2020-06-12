@@ -20,13 +20,6 @@
         android:textAlignment="textStart"
         android:text="Titulo Evento"/>
 
-    <TextView
-        android:id="@+id/txt_eventoUsuario"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAlignment="textStart"
-        android:text="Por: Usuario"/>
-
     <fragment
         android:id="@+id/mapView"
         android:layout_width="250dp"

@@ -1,11 +1,15 @@
 package com.example.coven.fragments
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.TextureView
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.example.coven.DetallesEventoActivity
 import com.example.coven.R
 import com.example.coven.models.EventoModel
 import kotlinx.android.synthetic.main.template_eventos_item.view.*
@@ -18,7 +22,7 @@ class EventoAdapter() :
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return EventoViewHolder(
             LayoutInflater.from(parent.context)
-                          .inflate(R.layout.template_eventos_item, parent, false)
+                .inflate(R.layout.template_eventos_item, parent, false)
         )
     }
 
@@ -46,10 +50,16 @@ class EventoAdapter() :
         val evento_lugar : TextView = itemView.tv_eventoLugar
 
         fun bind(eventoModel: EventoModel){
-
+            evento_fecha.setText(eventoModel.fecha)
             evento_titulo.setText(eventoModel.titulo)
             evento_descripcion.setText(eventoModel.descripcion)
             evento_lugar.setText(eventoModel.nombreLugar)
+
+            itemView.setOnClickListener{
+                var intent = Intent(this.itemView.context, DetallesEventoActivity::class.java)
+                intent.putExtra("Evento", eventoModel)
+                itemView.context.startActivity(intent)
+            }
 
         }
 

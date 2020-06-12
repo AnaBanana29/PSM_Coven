@@ -42,13 +42,24 @@ class LibreriaAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
         val hechizo_usuario = itemView.tv_hechizoUsuario
         val hechizo_descripcion = itemView.tv_hechizoDescripcion
         val hechizo_likes = itemView.tv_hechizoLikes
+        val hechizo_icon = itemView.iv_heart
 
         fun bind(hechizo : HechizoModel){
             hechizo_titulo.setText(hechizo.titulo)
             hechizo_usuario.setText(hechizo.usuario_nombre)
             hechizo_descripcion.setText(hechizo.descripcion)
             hechizo_likes.setText(hechizo.likes.toString())
+
+            hechizo_icon.setOnClickListener{
+                hechizo.likes ++
+                hechizo_likes.setText(hechizo.likes.toString())
+            }
         }
 
+
+    }
+
+    interface OnItemClickListener{
+        fun onItemClick(hechizo: HechizoModel)
     }
 }

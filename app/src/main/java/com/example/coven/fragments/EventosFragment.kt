@@ -1,31 +1,17 @@
 package com.example.coven.fragments
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.coven.AgregarEventoActivity
-import com.example.coven.LoginActivity
+import com.example.coven.*
 
-import com.example.coven.R
-import com.example.coven.TopSpacingItemDecoration
 import com.example.coven.models.EventoModel
-import com.google.gson.Gson
-import com.google.gson.GsonBuilder
 import kotlinx.android.synthetic.main.fragment_eventos.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
-import java.io.IOException
-import javax.sql.DataSource
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -39,7 +25,7 @@ private lateinit var eventoAdapter: EventoAdapter
  * Use the [EventosFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class EventosFragment : Fragment() {
+class EventosFragment : Fragment(), EventoAdapter.OnItemClickListener {
 
     private var param1: String? = null
     private var param2: String? = null
@@ -87,6 +73,7 @@ class EventosFragment : Fragment() {
     }
 
     private fun initRecyclerView(){
+        val data = com.example.coven.models.DataSource.createDataSetEvento()
         rv_Eventos.apply {
             layoutManager = LinearLayoutManager(context)
             val topSpacingDecoration = TopSpacingItemDecoration(30)
@@ -116,5 +103,10 @@ class EventosFragment : Fragment() {
                     putString(ARG_PARAM2, param2)
                 }
             }
+    }
+
+    override fun onItemClick(item: EventoModel) {
+        var intent = Intent(context, DetallesEventoActivity::class.java)
+        intent.putExtra("Evento", item)
     }
 }

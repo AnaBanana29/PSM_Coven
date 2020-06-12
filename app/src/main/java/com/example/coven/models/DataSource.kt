@@ -14,6 +14,7 @@ class DataSource {
             list.add(
                 EventoModel(
                     1,
+                    "Oct 29 2020 12:00AM",
                     "Sabrina",
                     "Conmemoración de Salem",
                     "Todas las brujas están invitadas a la reunión convocada para recordar a nuestras hermanas juzgadas",
@@ -25,6 +26,7 @@ class DataSource {
             list.add(
                 EventoModel(
                     2,
+                    "Nov 29 2020 12:00AM",
                     "LadyNight",
                     "Meditación en Grupo",
                     "Todas las brujas están invitadas a la reunión convocada para recordar a nuestras hermanas juzgadas",
@@ -36,6 +38,7 @@ class DataSource {
             list.add(
                 EventoModel(
                     3,
+                    "Feb 13 2020 12:00AM",
                     "AnaValdes",
                     "Bailar en la hoguera",
                     "Todas las brujas están invitadas a la reunión convocada para recordar a nuestras hermanas juzgadas",
@@ -47,6 +50,7 @@ class DataSource {
             list.add(
                 EventoModel(
                     4,
+                    "Nov 29 2020 12:00AM",
                     "RisaSardonica",
                     "Llamado al Baphomet",
                     "Todas las brujas están invitadas a la reunión convocada para recordar a nuestras hermanas juzgadas",
@@ -58,6 +62,7 @@ class DataSource {
             list.add(
                 EventoModel(
                     5,
+                    "Oct 29 2020 12:00AM",
                     "Sabrina",
                     "Conmemoración de Salem",
                     "Todas las brujas están invitadas a la reunión convocada para recordar a nuestras hermanas juzgadas",
@@ -69,6 +74,7 @@ class DataSource {
             list.add(
                 EventoModel(
                     6,
+                    "Feb 13 2020 12:00AM",
                     "Sabrina",
                     "Conmemoración de Salem",
                     "Todas las brujas están invitadas a la reunión convocada para recordar a nuestras hermanas juzgadas",
@@ -80,6 +86,7 @@ class DataSource {
             list.add(
                 EventoModel(
                     7,
+                    "Oct 29 2020 12:00AM",
                     "LadyNight",
                     "Meditación en Grupo",
                     "Todas las brujas están invitadas a la reunión convocada para recordar a nuestras hermanas juzgadas",
@@ -91,6 +98,7 @@ class DataSource {
             list.add(
                 EventoModel(
                     8,
+                    "Nov 29 2020 12:00AM",
                     "AnaValdes",
                     "Bailar en la hoguera",
                     "Todas las brujas están invitadas a la reunión convocada para recordar a nuestras hermanas juzgadas",
@@ -102,6 +110,7 @@ class DataSource {
             list.add(
                 EventoModel(
                     9,
+                    "Feb 13 2020 12:00AM",
                     "RisaSardonica",
                     "Llamado al Baphomet",
                     "Todas las brujas están invitadas a la reunión convocada para recordar a nuestras hermanas juzgadas",
@@ -113,6 +122,7 @@ class DataSource {
             list.add(
                 EventoModel(
                     10,
+                    "Oct 29 2020 12:00AM",
                     "Sabrina",
                     "Conmemoración de Salem",
                     "Todas las brujas están invitadas a la reunión convocada para recordar a nuestras hermanas juzgadas",
